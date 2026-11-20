@@ -1,0 +1,462 @@
+/*
+ * Tailwind v4 entry. Keep every @import in this top block.
+ */
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+@import "leaflet/dist/leaflet.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Central SAMU 192 — "Console noturno".
+ * Painel de operação escuro (grafite azulado), vermelho SAMU como sinal primário,
+ * âmbar para alerta, verde para disponível e ciano para rota.
+ */
+
+@theme inline {
+  --font-display: "Barlow Condensed", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --color-panel: var(--panel);
+  --color-panel-raised: var(--panel-raised);
+  --color-rail: var(--rail);
+  --color-signal: var(--signal);
+  --color-signal-foreground: var(--signal-foreground);
+  --color-route: var(--route);
+  --color-ok: var(--ok);
+  --color-busy: var(--busy);
+  --color-off: var(--off);
+  --color-geres-1: var(--geres-1);
+  --color-geres-2: var(--geres-2);
+  --color-geres-3: var(--geres-3);
+  --color-geres-12: var(--geres-12);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --animate-beacon: beacon 1.8s ease-out infinite;
+  --animate-blink: blink 1.2s steps(2, start) infinite;
+  --animate-rise: rise 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  --background: oklch(0.155 0.018 255);
+  --foreground: oklch(0.95 0.008 250);
+  --card: oklch(0.195 0.02 255);
+  --card-foreground: oklch(0.95 0.008 250);
+  --popover: oklch(0.21 0.022 255);
+  --popover-foreground: oklch(0.95 0.008 250);
+
+  --primary: oklch(0.62 0.225 25);
+  --primary-foreground: oklch(0.985 0.005 25);
+  --primary-glow: oklch(0.7 0.21 30);
+
+  --secondary: oklch(0.25 0.022 255);
+  --secondary-foreground: oklch(0.92 0.01 250);
+  --muted: oklch(0.23 0.02 255);
+  --muted-foreground: oklch(0.68 0.025 250);
+  --accent: oklch(0.27 0.025 255);
+  --accent-foreground: oklch(0.96 0.008 250);
+  --destructive: oklch(0.62 0.225 25);
+  --destructive-foreground: oklch(0.985 0.005 25);
+  --border: oklch(0.3 0.022 255);
+  --input: oklch(0.32 0.024 255);
+  --ring: oklch(0.7 0.21 30);
+
+  --panel: oklch(0.185 0.02 255 / 0.92);
+  --panel-raised: oklch(0.225 0.022 255);
+  --rail: oklch(0.13 0.016 255);
+  --signal: oklch(0.82 0.16 78);
+  --signal-foreground: oklch(0.2 0.03 70);
+  --route: oklch(0.8 0.13 205);
+  --ok: oklch(0.76 0.17 152);
+  --busy: oklch(0.82 0.16 78);
+  --off: oklch(0.64 0.2 25);
+
+  --geres-1: oklch(0.7 0.2 25);
+  --geres-2: oklch(0.8 0.15 78);
+  --geres-3: oklch(0.75 0.15 152);
+  --geres-12: oklch(0.75 0.12 220);
+
+  --gradient-signal: linear-gradient(135deg, var(--primary), var(--primary-glow));
+  --gradient-hero: linear-gradient(
+    90deg,
+    oklch(0.13 0.016 255 / 0.98) 0%,
+    oklch(0.13 0.016 255 / 0.85) 40%,
+    oklch(0.13 0.016 255 / 0.2) 100%
+  );
+  --shadow-signal:
+    0 0 0 1px color-mix(in oklab, var(--primary) 50%, transparent),
+    0 12px 40px -12px color-mix(in oklab, var(--primary) 70%, transparent);
+  --shadow-panel: 0 20px 50px -20px oklch(0 0 0 / 0.7);
+
+  --chart-1: var(--primary);
+  --chart-2: var(--route);
+  --chart-3: var(--ok);
+  --chart-4: var(--signal);
+  --chart-5: var(--muted-foreground);
+  --sidebar: var(--rail);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-primary: var(--primary);
+  --sidebar-primary-foreground: var(--primary-foreground);
+  --sidebar-accent: var(--accent);
+  --sidebar-accent-foreground: var(--accent-foreground);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--ring);
+}
+
+/* Tema claro de alto contraste: a estação pode alternar sem perder legibilidade. */
+html:not(.dark) {
+  --background: oklch(0.96 0.012 245);
+  --foreground: oklch(0.22 0.025 250);
+  --card: oklch(0.985 0.006 245);
+  --card-foreground: oklch(0.22 0.025 250);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.22 0.025 250);
+  --primary: oklch(0.53 0.21 26);
+  --primary-foreground: oklch(0.99 0.004 25);
+  --primary-glow: oklch(0.63 0.19 30);
+  --secondary: oklch(0.92 0.016 245);
+  --secondary-foreground: oklch(0.25 0.025 250);
+  --muted: oklch(0.93 0.012 245);
+  --muted-foreground: oklch(0.42 0.028 250);
+  --accent: oklch(0.9 0.026 245);
+  --accent-foreground: oklch(0.22 0.025 250);
+  --destructive: oklch(0.5 0.2 26);
+  --destructive-foreground: oklch(0.99 0.004 25);
+  --border: oklch(0.79 0.018 245);
+  --input: oklch(0.73 0.022 245);
+  --ring: oklch(0.53 0.21 26);
+  --panel: oklch(0.985 0.006 245 / 0.94);
+  --panel-raised: oklch(1 0 0);
+  --rail: oklch(0.92 0.014 245);
+  --signal: oklch(0.62 0.15 78);
+  --signal-foreground: oklch(0.26 0.05 75);
+  --route: oklch(0.48 0.13 215);
+  --ok: oklch(0.5 0.16 152);
+  --busy: oklch(0.62 0.15 78);
+  --off: oklch(0.52 0.2 26);
+  --shadow-panel: 0 18px 42px -24px oklch(0.2 0.03 250 / 0.32);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  html:not(.dark) {
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 45%, transparent);
+  }
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  letter-spacing: 0.01em;
+}
+
+@utility bg-signal-gradient {
+  background-image: var(--gradient-signal);
+}
+
+@utility bg-hero-fade {
+  background-image: var(--gradient-hero);
+}
+
+@utility shadow-signal {
+  box-shadow: var(--shadow-signal);
+}
+
+@utility shadow-panel {
+  box-shadow: var(--shadow-panel);
+}
+
+/* Fine tactical grid used behind panels */
+@utility bg-grid {
+  background-image:
+    linear-gradient(color-mix(in oklab, var(--foreground) 5%, transparent) 1px, transparent 1px),
+    linear-gradient(
+      90deg,
+      color-mix(in oklab, var(--foreground) 5%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 28px 28px;
+}
+
+@utility label-caps {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@keyframes beacon {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Leaflet skin ---------- */
+.leaflet-container {
+  background: var(--rail);
+  font-family: var(--font-sans);
+}
+
+.leaflet-control-zoom a {
+  background: var(--panel-raised) !important;
+  color: var(--foreground) !important;
+  border-color: var(--border) !important;
+}
+
+.leaflet-control-attribution {
+  background: color-mix(in oklab, var(--rail) 80%, transparent) !important;
+  color: var(--muted-foreground) !important;
+  font-size: 10px !important;
+}
+
+.leaflet-control-attribution a {
+  color: var(--route) !important;
+}
+
+.leaflet-tooltip.samu-tip {
+  background: var(--popover);
+  color: var(--popover-foreground);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  box-shadow: var(--shadow-panel);
+  pointer-events: none;
+}
+
+.leaflet-tooltip.samu-tip::before {
+  display: none;
+}
+
+.leaflet-tooltip.samu-tip strong,
+.leaflet-tooltip.samu-tip span {
+  display: block;
+}
+
+.leaflet-tooltip.samu-tip strong {
+  color: var(--foreground);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.leaflet-tooltip.samu-tip span {
+  margin-top: 2px;
+  color: var(--muted-foreground);
+  font-size: 9px;
+  line-height: 1.25;
+}
+
+.leaflet-tooltip.samu-base-label {
+  min-width: 92px;
+  margin-left: 2px;
+  padding: 5px 7px;
+  background: color-mix(in oklab, var(--popover) 94%, transparent);
+}
+
+.leaflet-tooltip.samu-muni-label {
+  max-width: 230px;
+  padding: 5px 7px;
+  text-align: center;
+}
+
+.samu-base {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: var(--panel-raised);
+  border: 2px solid var(--ok);
+  color: var(--foreground);
+  font: 700 17px/1 var(--font-sans);
+  box-shadow:
+    0 4px 14px oklch(0 0 0 / 0.5),
+    0 0 0 3px color-mix(in oklab, var(--rail) 66%, transparent);
+}
+
+.samu-base[data-status="sem_viatura"] {
+  border-color: var(--off);
+  opacity: 0.65;
+}
+
+.samu-base[data-active="true"] {
+  background: var(--route);
+  color: var(--rail);
+  border-color: var(--route);
+  box-shadow:
+    0 0 0 5px color-mix(in oklab, var(--route) 28%, transparent),
+    0 6px 18px oklch(0 0 0 / 0.42);
+  transform: scale(1.16);
+}
+
+.samu-incident {
+  position: relative;
+  width: 22px;
+  height: 22px;
+}
+
+.samu-incident::before,
+.samu-incident::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: var(--primary);
+}
+
+.samu-incident::before {
+  animation: beacon 1.8s ease-out infinite;
+}
+
+.samu-incident::after {
+  inset: 4px;
+  border: 2px solid var(--primary-foreground);
+}
+
+.samu-muni {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  border: 2px solid var(--rail);
+  background: var(--coverage-color, var(--geres-1));
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--foreground) 30%, transparent),
+    0 2px 5px oklch(0 0 0 / 0.28);
+}
+
+.samu-route {
+  stroke: var(--route);
+}
+
+.samu-route-halo {
+  stroke: var(--rail);
+}
+
+.samu-line {
+  stroke: var(--signal);
+}
+
+.samu-muni[data-base="pendente"] {
+  opacity: 0.62;
+  filter: saturate(0.6);
+}
+.samu-muni[data-role="destino"] {
+  width: 20px;
+  height: 20px;
+  border: 3px solid var(--primary-foreground);
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 60%, transparent);
+}
+.samu-muni[data-role="origem"] {
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--signal);
+}
+
+@media (max-width: 760px) {
+  .leaflet-tooltip.samu-base-label {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.samu-base[data-status="nao_confirmado"] {
+  border-color: var(--busy);
+  opacity: 0.65;
+}

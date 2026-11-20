@@ -1,0 +1,130 @@
+/*
+ * Referência territorial da I Macrorregião de Saúde de Pernambuco.
+ *
+ * São 72 territórios: 71 municípios e o Distrito Estadual de Fernando de
+ * Noronha, distribuídos nas regiões de saúde I, II, III e XII. Os pontos
+ * abaixo são centroides de referência derivados da Malha Municipal do IBGE.
+ * Eles mantêm o mapa útil caso a camada opcional de limites do IBGE não esteja
+ * acessível. Não representam bases, viaturas ou pactuações de despacho.
+ */
+
+export const REGIOES_MACRORREGIAO = {
+  I: {
+    id: "I",
+    label: "I GERES",
+    polo: "Recife",
+    color: "#2563EB",
+    description: "Região de referência Recife",
+  },
+  II: {
+    id: "II",
+    label: "II GERES",
+    polo: "Limoeiro",
+    color: "#7C3AED",
+    description: "Região de referência Limoeiro",
+  },
+  III: {
+    id: "III",
+    label: "III GERES",
+    polo: "Palmares",
+    color: "#0F766E",
+    description: "Região de referência Palmares",
+  },
+  XII: {
+    id: "XII",
+    label: "XII GERES",
+    polo: "Goiana",
+    color: "#C2410C",
+    description: "Região de referência Goiana",
+  },
+};
+
+export const TERRITORIOS_MACRORREGIAO_I = [
+  { id: "2600054", name: "Abreu e Lima", group: "I", lat: -7.8639, lng: -35.0031 },
+  { id: "2601052", name: "Araçoiaba", group: "I", lat: -7.8014, lng: -35.0861 },
+  { id: "2602902", name: "Cabo de Santo Agostinho", group: "I", lat: -8.2758, lng: -35.0967 },
+  { id: "2603454", name: "Camaragibe", group: "I", lat: -7.98305, lng: -34.9994 },
+  { id: "2604403", name: "Chã de Alegria", group: "I", lat: -8.0066, lng: -35.2122 },
+  { id: "2604502", name: "Chã Grande", group: "I", lat: -8.2359, lng: -35.4708 },
+  {
+    id: "2605459",
+    name: "Fernando de Noronha",
+    group: "I",
+    lat: -3.8615,
+    lng: -32.42785,
+    island: true,
+    type: "Distrito Estadual",
+  },
+  { id: "2606101", name: "Glória do Goitá", group: "I", lat: -8.0115, lng: -35.3451 },
+  { id: "2606804", name: "Igarassu", group: "I", lat: -7.79535, lng: -34.9703 },
+  { id: "2607604", name: "Ilha de Itamaracá", group: "I", lat: -7.7521, lng: -34.8567 },
+  { id: "2607208", name: "Ipojuca", group: "I", lat: -8.45965, lng: -35.09935 },
+  { id: "2607752", name: "Itapissuma", group: "I", lat: -7.7494, lng: -34.9023 },
+  { id: "2607901", name: "Jaboatão dos Guararapes", group: "I", lat: -8.14345, lng: -35.00295 },
+  { id: "2609402", name: "Moreno", group: "I", lat: -8.1506, lng: -35.1427 },
+  { id: "2609600", name: "Olinda", group: "I", lat: -8.0018, lng: -34.87095 },
+  { id: "2610707", name: "Paulista", group: "I", lat: -7.91225, lng: -34.92775 },
+  { id: "2611309", name: "Pombos", group: "I", lat: -8.1901, lng: -35.39015 },
+  { id: "2611606", name: "Recife", group: "I", lat: -8.04215, lng: -34.9386 },
+  { id: "2613701", name: "São Lourenço da Mata", group: "I", lat: -8.01515, lng: -35.1092 },
+  { id: "2616407", name: "Vitória de Santo Antão", group: "I", lat: -8.1633, lng: -35.3136 },
+  { id: "2602209", name: "Bom Jardim", group: "II", lat: -7.77005, lng: -35.56355 },
+  { id: "2602704", name: "Buenos Aires", group: "II", lat: -7.72565, lng: -35.33615 },
+  { id: "2604007", name: "Carpina", group: "II", lat: -7.8257, lng: -35.3102 },
+  { id: "2604155", name: "Casinhas", group: "II", lat: -7.7627, lng: -35.71475 },
+  { id: "2604908", name: "Cumaru", group: "II", lat: -8.02935, lng: -35.7253 },
+  { id: "2605400", name: "Feira Nova", group: "II", lat: -7.947, lng: -35.38085 },
+  { id: "2608107", name: "João Alfredo", group: "II", lat: -7.8555, lng: -35.59775 },
+  { id: "2608453", name: "Lagoa do Carro", group: "II", lat: -7.85685, lng: -35.3475 },
+  { id: "2608503", name: "Lagoa de Itaenga", group: "II", lat: -7.9083, lng: -35.2982 },
+  { id: "2608909", name: "Limoeiro", group: "II", lat: -7.83755, lng: -35.43805 },
+  { id: "2609105", name: "Machados", group: "II", lat: -7.6999, lng: -35.49705 },
+  { id: "2609501", name: "Nazaré da Mata", group: "II", lat: -7.74215, lng: -35.22995 },
+  { id: "2609709", name: "Orobó", group: "II", lat: -7.71375, lng: -35.6002 },
+  { id: "2610509", name: "Passira", group: "II", lat: -8.01245, lng: -35.54085 },
+  { id: "2610608", name: "Paudalho", group: "II", lat: -7.8847, lng: -35.14285 },
+  { id: "2612109", name: "Salgadinho", group: "II", lat: -7.913, lng: -35.59755 },
+  { id: "2614501", name: "Surubim", group: "II", lat: -7.88915, lng: -35.75005 },
+  { id: "2615508", name: "Tracunhaém", group: "II", lat: -7.74795, lng: -35.1719 },
+  { id: "2616183", name: "Vertente do Lério", group: "II", lat: -7.77485, lng: -35.81665 },
+  { id: "2616308", name: "Vicência", group: "II", lat: -7.6659, lng: -35.35375 },
+  { id: "2600401", name: "Água Preta", group: "III", lat: -8.67605, lng: -35.47655 },
+  { id: "2600906", name: "Amaraji", group: "III", lat: -8.35645, lng: -35.46095 },
+  { id: "2601409", name: "Barreiros", group: "III", lat: -8.82045, lng: -35.2559 },
+  { id: "2601508", name: "Belém de Maria", group: "III", lat: -8.5982, lng: -35.80755 },
+  { id: "2604205", name: "Catende", group: "III", lat: -8.6907, lng: -35.74055 },
+  { id: "2604809", name: "Cortês", group: "III", lat: -8.41885, lng: -35.5212 },
+  { id: "2605202", name: "Escada", group: "III", lat: -8.36525, lng: -35.2522 },
+  { id: "2605905", name: "Gameleira", group: "III", lat: -8.61695, lng: -35.37625 },
+  { id: "2607950", name: "Jaqueira", group: "III", lat: -8.74155, lng: -35.80335 },
+  { id: "2608206", name: "Joaquim Nabuco", group: "III", lat: -8.5731, lng: -35.53925 },
+  { id: "2608701", name: "Lagoa dos Gatos", group: "III", lat: -8.67885, lng: -35.8932 },
+  { id: "2609204", name: "Maraial", group: "III", lat: -8.8383, lng: -35.7602 },
+  { id: "2610004", name: "Palmares", group: "III", lat: -8.65765, lng: -35.62925 },
+  { id: "2611408", name: "Primavera", group: "III", lat: -8.34035, lng: -35.4054 },
+  { id: "2611507", name: "Quipapá", group: "III", lat: -8.82965, lng: -36.0358 },
+  { id: "2611804", name: "Ribeirão", group: "III", lat: -8.52425, lng: -35.38375 },
+  { id: "2611903", name: "Rio Formoso", group: "III", lat: -8.6691, lng: -35.22755 },
+  { id: "2612901", name: "São Benedito do Sul", group: "III", lat: -8.8177, lng: -35.90595 },
+  { id: "2613404", name: "São José da Coroa Grande", group: "III", lat: -8.8717, lng: -35.1954 },
+  { id: "2614204", name: "Sirinhaém", group: "III", lat: -8.583, lng: -35.16445 },
+  { id: "2614857", name: "Tamandaré", group: "III", lat: -8.7463, lng: -35.22375 },
+  { id: "2616506", name: "Xexéu", group: "III", lat: -8.84255, lng: -35.6529 },
+  { id: "2606200", name: "Goiana", group: "XII", lat: -7.5882, lng: -34.9433 },
+  { id: "2600708", name: "Aliança", group: "XII", lat: -7.6057, lng: -35.18505 },
+  { id: "2603603", name: "Camutanga", group: "XII", lat: -7.44125, lng: -35.28985 },
+  { id: "2604601", name: "Condado", group: "XII", lat: -7.60585, lng: -35.10405 },
+  { id: "2605509", name: "Ferreiros", group: "XII", lat: -7.4714, lng: -35.23515 },
+  { id: "2607653", name: "Itambé", group: "XII", lat: -7.45925, lng: -35.15915 },
+  { id: "2607802", name: "Itaquitinga", group: "XII", lat: -7.6814, lng: -35.0229 },
+  { id: "2609006", name: "Macaparana", group: "XII", lat: -7.5349, lng: -35.45355 },
+  { id: "2613800", name: "São Vicente Férrer", group: "XII", lat: -7.6026, lng: -35.4915 },
+  { id: "2615300", name: "Timbaúba", group: "XII", lat: -7.5192, lng: -35.32125 },
+];
+
+export const TERRITORIOS_CONTINENTAIS = TERRITORIOS_MACRORREGIAO_I.filter(
+  (territorio) => !territorio.island,
+);
+export const TERRITORIOS_POR_ID = new Map(
+  TERRITORIOS_MACRORREGIAO_I.map((territorio) => [territorio.id, territorio]),
+);
